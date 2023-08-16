@@ -1,7 +1,15 @@
+"use client";
+import createcart from "@/utils/createcart";
 import Image from "next/image";
 
 export default function Product({ props }) {
-  const { title, price, category, image } = props;
+  const { id, title, price, category, image } = props;
+
+  const handleAddToCart = () => {
+    createcart(id)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="card w-[360px] bg-base-100 shadow-xl mt-6">
@@ -19,7 +27,9 @@ export default function Product({ props }) {
         <p>{category}</p>
         <div className="card-actions items-center justify-between">
           <p className="font-bold">${price}</p>
-          <button className="btn btn-primary btn-sm">Buy Now</button>
+          <button onClick={handleAddToCart} className="btn btn-primary btn-sm">
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
