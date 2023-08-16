@@ -7,7 +7,9 @@ export default async function Cartpage() {
     <div>
       {cartLists.map((cartItem, cartIndex) => (
         <div key={cartIndex}>
-          <h1>Cart {cartIndex + 1}</h1>
+          <h1>Cart {cartItem.id}</h1>
+          <p>User ID: {cartItem.userId}</p>
+          <p>Date: {cartItem.date}</p>
           <ul>
             {cartItem.products.map((product, productIndex) => (
               <li key={productIndex}>
